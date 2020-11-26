@@ -16,8 +16,12 @@
     </ol>
     <label for="date">Дата занятия</label>
     <input type="date" id="date" name="date" value="today">
-    <label for="seminar">Номер занятия(первой пары за дату)</label>
-    <input type="number" id="seminar" name="seminar" min="1" max="100" value="1">
+    <label for="seminar">Предмет</label>
+    <select id="seminar" name="seminar">
+        <option value="1">ЧМы</option>
+        <option value="2">Мобилки</option>
+        <option value="3">Биоинфа</option>
+    </select>
     <button id="gen">GEN</button>
 </body>
 <script type="text/javascript">
@@ -90,11 +94,10 @@
         }
         
         var seed = document.getElementById("date").value + document.getElementById("seminar").value
+        console.log(seed)
         Math.seedrandom(seed)
         shuffle(users)
         for (i = 0; i < users.length; i++) {
-
-
             let li = document.createElement('li');
             li.textContent = users[i];
             document.getElementById("list").appendChild(li)
