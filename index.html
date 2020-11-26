@@ -1,1 +1,88 @@
-<h1>hello</h1>
+<html>
+
+<head>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.3.10/seedrandom.min.js"></script>
+</head>
+
+<body>
+    <ol id="list">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+    <input type="date" id="date" name="date" value="today">
+    <input type="number" id="seminar" name="seminar" min="1" max="100" value="1">
+    <button id="gen">GEN</button>
+</body>
+<script type="text/javascript">
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("date").value = today
+
+
+
+
+    document.getElementById("gen").addEventListener("click", () => {
+        document.getElementById("list").innerHTML = ""
+        var users = [
+            "Януш Вишневский",
+            "Спиридонова Александра",
+            "Даниил Гавриловский",
+            "Вольха Котова",
+            "Ума Мирзоева",
+            "Антон Прийма",
+            "Влад Пичугин",
+            "Владислав Мамедов",
+            "Настя Кузнецова",
+            "Алексей Мамаев",
+            "Наталия Климова",
+            "Сева Молчанов",
+            "Дима Рыбаков",
+            "Макс Буйвол",
+            "Татьяна Субботина",
+            "Дмитрий Сырбу",
+            "Евгений Шевляков",
+            "Алишер Рогов",
+            "Камиль Яушев",
+            "Артур Ария",
+            "Миша Апахов",
+            "Влад Орлов",
+        ]
+        var seed = document.getElementById("date").value + document.getElementById("seminar").value
+        Math.seedrandom(seed)
+        shuffle(users)
+        for (i = 0; i < users.length; i++) {
+
+
+            let li = document.createElement('li');
+            li.textContent = users[i];
+            document.getElementById("list").appendChild(li)
+        }
+    })
+</script>
+
+</html>
