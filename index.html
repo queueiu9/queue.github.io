@@ -22,7 +22,7 @@
         <option value="2">Мобилки</option>
         <option value="3">Биоинфа</option>
     </select>
-    <button id="gen">GEN</button>
+    <!-- <button id="gen">GEN</button> -->
 </body>
 <script type="text/javascript">
     function shuffle(array) {
@@ -113,7 +113,11 @@
     document.getElementById("date").value = today
 
     gen()
-    document.getElementById("gen").addEventListener("click", gen)
+    // document.getElementById("gen").addEventListener("click", gen)
+    document.getElementById("date").onchange = gen
+    document.getElementById("seminar").onchange = gen
+    document.getElementById("option1").onclick = gen
+    document.getElementById("option2").onclick = gen
 </script>
 
 </html>
