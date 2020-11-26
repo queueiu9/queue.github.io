@@ -34,19 +34,7 @@
 
         return array;
     }
-
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-
-    today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById("date").value = today
-
-
-
-
-    document.getElementById("gen").addEventListener("click", () => {
+    var gen = () => {
         document.getElementById("list").innerHTML = ""
         var users = [
             "Януш Вишневский",
@@ -82,7 +70,18 @@
             li.textContent = users[i];
             document.getElementById("list").appendChild(li)
         }
-    })
+    }
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("date").value = today
+
+    gen()
+    document.getElementById("gen").addEventListener("click", gen)
 </script>
 
 </html>
